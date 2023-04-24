@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="2" parallel="classes" name="Failed suite [Big TestNG Test]">
+  <listeners>
+    <listener class-name="com.aventstack.extentreports.testng.listener.ExtentITestListenerAdapter"/>
+    <listener class-name="com.big.utils.AnnotationTransformer"/>
+  </listeners>
+  <test thread-count="2" parallel="classes" name="Google Search(failed)">
+    <groups>
+      <run>
+        <include name="Sanity"/>
+        <include name="Smoke"/>
+        <exclude name="Regression"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="com.big.testNGscripts.GoogleSearchTest">
+        <methods>
+          <include name="testInfo"/>
+          <include name="intiateTest"/>
+          <include name="searchForTestingTrends"/>
+          <include name="closedBrowser"/>
+        </methods>
+      </class> <!-- com.big.testNGscripts.GoogleSearchTest -->
+    </classes>
+  </test> <!-- Google Search(failed) -->
+</suite> <!-- Failed suite [Big TestNG Test] -->

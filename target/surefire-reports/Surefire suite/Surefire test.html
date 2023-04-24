@@ -1,0 +1,736 @@
+<html>
+<head>
+<title>TestNG:  Surefire test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Surefire test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
+</tr><tr>
+<td>Started on:</td><td>Mon Apr 17 20:02:00 IST 2023</td>
+</tr>
+<tr><td>Total time:</td><td>19 seconds (19297 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.big.TestRunners.KarateRunner.testParallel()'><b>testParallel</b><br>Test class: com.big.TestRunners.KarateRunner</td>
+<td><div><pre>java.lang.AssertionError: no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+js failed:
+&gt;&gt;&gt;&gt;
+01: read(../Village Branch Service XAPI/Village_Branch_XAPI.feature)
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: SyntaxError: Unnamed:1:5 Expected an operand but found .
+read(../Village Branch Service XAPI/Village_Branch_XAPI.feature)
+     ^
+
+- org.graalvm.polyglot.Context.eval(Context.java:425)
+- com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:141)
+- com.intuit.karate.graal.JsEngine.eval(JsEngine.java:137)
+- com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1344)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2373)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2292)
+- com.intuit.karate.core.ScenarioEngine.call(ScenarioEngine.java:2056)
+
+classpath:com/big/features/APIfeatures/SCU/FISSSO-XAPI/Read_Token_Read_Card.feature:8
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl +&apos;/api/bat/member/&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;Baseurl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/CC-XAPI/CC_XAPI.feature:6
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl +&apos;/healthcheck&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;Baseurl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/CC-XAPI/CC_XAPI.feature:12
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl &apos;/api/bat/member/&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: SyntaxError: Unnamed:1:9 Expected ; but found /api/bat/member/
+Baseurl &apos;/api/bat/member/&apos;
+         ^
+
+- org.graalvm.polyglot.Context.eval(Context.java:425)
+- com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:141)
+- com.intuit.karate.graal.JsEngine.eval(JsEngine.java:137)
+- com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1344)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2373)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2292)
+- com.intuit.karate.core.ScenarioEngine.url(ScenarioEngine.java:365)
+
+classpath:com/big/features/APIfeatures/SCU/CC-XAPI/CC_XAPI.feature:18
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl + &apos;/healthcheck&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;Baseurl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/CC-XAPI/CC_XAPI.feature:24
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl &apos;/api/bat/member/&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: SyntaxError: Unnamed:1:9 Expected ; but found /api/bat/member/
+Baseurl &apos;/api/bat/member/&apos;
+         ^
+
+- org.graalvm.polyglot.Context.eval(Context.java:425)
+- com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:141)
+- com.intuit.karate.graal.JsEngine.eval(JsEngine.java:137)
+- com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1344)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2373)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2292)
+- com.intuit.karate.core.ScenarioEngine.url(ScenarioEngine.java:365)
+
+classpath:com/big/features/APIfeatures/SCU/CC-XAPI/CC_XAPI.feature:30
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl + &apos;/healthcheck&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;Baseurl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/CC-XAPI/CC_XAPI.feature:36
+js failed:
+&gt;&gt;&gt;&gt;
+01: BaseUrl
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;BaseUrl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/CC-XAPI/CC_XAPI.feature:43
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl &apos;core-api/secure/iso20022/account&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: SyntaxError: Unnamed:1:9 Expected ; but found core-api/secure/iso20022/account
+Baseurl &apos;core-api/secure/iso20022/account&apos;
+         ^
+
+- org.graalvm.polyglot.Context.eval(Context.java:425)
+- com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:141)
+- com.intuit.karate.graal.JsEngine.eval(JsEngine.java:137)
+- com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1344)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2373)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2292)
+- com.intuit.karate.core.ScenarioEngine.url(ScenarioEngine.java:365)
+
+classpath:com/big/features/APIfeatures/SCU/Core ISO XAPI/Core_ISO_XAPI.feature:6
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl + &apos;/healthcheck&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;Baseurl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/Core ISO XAPI/Core_ISO_XAPI.feature:12
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl &apos;/api/bat/member/&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: SyntaxError: Unnamed:1:9 Expected ; but found /api/bat/member/
+Baseurl &apos;/api/bat/member/&apos;
+         ^
+
+- org.graalvm.polyglot.Context.eval(Context.java:425)
+- com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:141)
+- com.intuit.karate.graal.JsEngine.eval(JsEngine.java:137)
+- com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1344)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2373)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2292)
+- com.intuit.karate.core.ScenarioEngine.url(ScenarioEngine.java:365)
+
+classpath:com/big/features/APIfeatures/SCU/Core ISO XAPI/Core_ISO_XAPI.feature:18
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl + &apos;/healthcheck&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;Baseurl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/Core ISO XAPI/Core_ISO_XAPI.feature:24
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl &apos;/api/bat/member/&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: SyntaxError: Unnamed:1:9 Expected ; but found /api/bat/member/
+Baseurl &apos;/api/bat/member/&apos;
+         ^
+
+- org.graalvm.polyglot.Context.eval(Context.java:425)
+- com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:141)
+- com.intuit.karate.graal.JsEngine.eval(JsEngine.java:137)
+- com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1344)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2373)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2292)
+- com.intuit.karate.core.ScenarioEngine.url(ScenarioEngine.java:365)
+
+classpath:com/big/features/APIfeatures/SCU/Core ISO XAPI/Core_ISO_XAPI.feature:30
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl + &apos;/healthcheck&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;Baseurl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/Core ISO XAPI/Core_ISO_XAPI.feature:36
+js failed:
+&gt;&gt;&gt;&gt;
+01: BaseUrl
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;BaseUrl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/Core ISO XAPI/Core_ISO_XAPI.feature:43
+no step-definition method match found for: I am on Login page
+classpath:com/big/features/APIfeatures/SCU/GoogleTest.feature:10
+no step-definition method match found for: I am on google page
+classpath:com/big/features/APIfeatures/SCU/GoogleTest.feature:16
+no step-definition method match found for: I am on google page
+classpath:com/big/features/APIfeatures/SCU/GoogleTest.feature:16
+no step-definition method match found for: def Baseurl =&apos;https://bat-xapi.ca-c1.cloudhub.io/api/v1&apos;
+classpath:com/big/features/APIfeatures/BAT-API/Submission.feature:3
+no step-definition method match found for: def Baseurl =&apos;https://bat-xapi.ca-c1.cloudhub.io/api/v1&apos;
+classpath:com/big/features/APIfeatures/BAT-API/Submission.feature:3
+no step-definition method match found for: def Baseurl =&apos;https://bat-xapi.ca-c1.cloudhub.io/api/v1&apos;
+classpath:com/big/features/APIfeatures/BAT-API/Submission.feature:3
+no step-definition method match found for: def Baseurl =&apos;https://bat-xapi.ca-c1.cloudhub.io/api/v1&apos;
+classpath:com/big/features/APIfeatures/BAT-API/Submission.feature:3
+no step-definition method match found for: I am on Google home Page
+classpath:com/big/features/APIfeatures/SCU/DataTable.feature:7
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl &apos;/api/bat/member/&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: SyntaxError: Unnamed:1:9 Expected ; but found /api/bat/member/
+Baseurl &apos;/api/bat/member/&apos;
+         ^
+
+- org.graalvm.polyglot.Context.eval(Context.java:425)
+- com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:141)
+- com.intuit.karate.graal.JsEngine.eval(JsEngine.java:137)
+- com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1344)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2373)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2292)
+- com.intuit.karate.core.ScenarioEngine.url(ScenarioEngine.java:365)
+
+classpath:com/big/features/APIfeatures/SCU/TOKEN -XAPI/Token.feature:6
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl + &apos;/healthcheck&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;Baseurl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/TOKEN -XAPI/Token.feature:12
+js failed:
+&gt;&gt;&gt;&gt;
+01: BaseUrl
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;BaseUrl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/TOKEN -XAPI/Token.feature:19
+no step-definition method match found for: def Baseurl =&apos;http://credit-card-xapi.ca-c1.cloudhub.io/api/v1&apos;
+classpath:com/big/features/APIfeatures/CC-API/Read_Accounts.feature:3
+no step-definition method match found for: def Baseurl =&apos;http://credit-card-xapi.ca-c1.cloudhub.io/api/v1&apos;
+classpath:com/big/features/APIfeatures/CC-API/Read_Accounts.feature:3
+no step-definition method match found for: def Baseurl =&apos;http://credit-card-xapi.ca-c1.cloudhub.io/api/v1&apos;
+classpath:com/big/features/APIfeatures/CC-API/Read_Accounts.feature:3
+no step-definition method match found for: def Baseurl =&apos;http://credit-card-xapi.ca-c1.cloudhub.io/api/v1&apos;
+classpath:com/big/features/APIfeatures/CC-API/Read_Accounts.feature:3
+no step-definition method match found for: def Baseurl =&apos;http://credit-card-xapi.ca-c1.cloudhub.io/api/v1&apos;
+classpath:com/big/features/APIfeatures/CC-API/Read_Accounts.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/SCU/FIS-SAPI/FIS-SAPI.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/SCU/FIS-SAPI/FIS-SAPI.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/SCU/FIS-SAPI/FIS-SAPI.feature:3
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl &apos;/api/bat/member/&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: SyntaxError: Unnamed:1:9 Expected ; but found /api/bat/member/
+Baseurl &apos;/api/bat/member/&apos;
+         ^
+
+- org.graalvm.polyglot.Context.eval(Context.java:425)
+- com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:141)
+- com.intuit.karate.graal.JsEngine.eval(JsEngine.java:137)
+- com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1344)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2373)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2292)
+- com.intuit.karate.core.ScenarioEngine.url(ScenarioEngine.java:365)
+
+classpath:com/big/features/APIfeatures/SCU/TOKEN -SAPI/TokenSAPI.feature:6
+no step-definition method match found for: match responseStatus 200
+classpath:com/big/features/APIfeatures/SCU/Village Branch Service XAPI/Village_Branch_XAPI.feature:8
+match failed: EACH_EQUALS
+  $ | match each failed at index 7 (LIST:STRING)
+  [&quot;Red Deer&quot;,&quot;Red Deer&quot;,&quot;Red Deer&quot;,&quot;Red Deer&quot;,&quot;Red Deer&quot;,&quot;Red Deer&quot;,&quot;Red Deer&quot;,&quot;Redcliff&quot;,&quot;Red Deer&quot;,&quot;Red Deer&quot;,&quot;Red Deer&quot;,&quot;Red Deer&quot;,&quot;Red Deer&quot;,&quot;Red Deer&quot;]
+  &apos;Red Deer&apos;
+
+    $[7] | not equal (STRING:STRING)
+    &apos;Redcliff&apos;
+    &apos;Red Deer&apos;
+
+classpath:com/big/features/APIfeatures/SCU/Village Branch Service XAPI/Village_Branch_XAPI.feature:37 expected [48] but found [0]
+	at com.big.TestRunners.KarateRunner.testParallel(KarateRunner.java:21)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace975733206", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace975733206'><pre>java.lang.AssertionError: no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/FIS-API/FIS-API.feature:3
+js failed:
+&gt;&gt;&gt;&gt;
+01: read(../Village Branch Service XAPI/Village_Branch_XAPI.feature)
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: SyntaxError: Unnamed:1:5 Expected an operand but found .
+read(../Village Branch Service XAPI/Village_Branch_XAPI.feature)
+     ^
+
+- org.graalvm.polyglot.Context.eval(Context.java:425)
+- com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:141)
+- com.intuit.karate.graal.JsEngine.eval(JsEngine.java:137)
+- com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1344)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2373)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2292)
+- com.intuit.karate.core.ScenarioEngine.call(ScenarioEngine.java:2056)
+
+classpath:com/big/features/APIfeatures/SCU/FISSSO-XAPI/Read_Token_Read_Card.feature:8
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl +&apos;/api/bat/member/&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;Baseurl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/CC-XAPI/CC_XAPI.feature:6
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl +&apos;/healthcheck&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;Baseurl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/CC-XAPI/CC_XAPI.feature:12
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl &apos;/api/bat/member/&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: SyntaxError: Unnamed:1:9 Expected ; but found /api/bat/member/
+Baseurl &apos;/api/bat/member/&apos;
+         ^
+
+- org.graalvm.polyglot.Context.eval(Context.java:425)
+- com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:141)
+- com.intuit.karate.graal.JsEngine.eval(JsEngine.java:137)
+- com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1344)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2373)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2292)
+- com.intuit.karate.core.ScenarioEngine.url(ScenarioEngine.java:365)
+
+classpath:com/big/features/APIfeatures/SCU/CC-XAPI/CC_XAPI.feature:18
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl + &apos;/healthcheck&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;Baseurl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/CC-XAPI/CC_XAPI.feature:24
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl &apos;/api/bat/member/&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: SyntaxError: Unnamed:1:9 Expected ; but found /api/bat/member/
+Baseurl &apos;/api/bat/member/&apos;
+         ^
+
+- org.graalvm.polyglot.Context.eval(Context.java:425)
+- com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:141)
+- com.intuit.karate.graal.JsEngine.eval(JsEngine.java:137)
+- com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1344)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2373)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2292)
+- com.intuit.karate.core.ScenarioEngine.url(ScenarioEngine.java:365)
+
+classpath:com/big/features/APIfeatures/SCU/CC-XAPI/CC_XAPI.feature:30
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl + &apos;/healthcheck&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;Baseurl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/CC-XAPI/CC_XAPI.feature:36
+js failed:
+&gt;&gt;&gt;&gt;
+01: BaseUrl
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;BaseUrl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/CC-XAPI/CC_XAPI.feature:43
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl &apos;core-api/secure/iso20022/account&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: SyntaxError: Unnamed:1:9 Expected ; but found core-api/secure/iso20022/account
+Baseurl &apos;core-api/secure/iso20022/account&apos;
+         ^
+
+- org.graalvm.polyglot.Context.eval(Context.java:425)
+- com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:141)
+- com.intuit.karate.graal.JsEngine.eval(JsEngine.java:137)
+- com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1344)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2373)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2292)
+- com.intuit.karate.core.ScenarioEngine.url(ScenarioEngine.java:365)
+
+classpath:com/big/features/APIfeatures/SCU/Core ISO XAPI/Core_ISO_XAPI.feature:6
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl + &apos;/healthcheck&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;Baseurl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/Core ISO XAPI/Core_ISO_XAPI.feature:12
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl &apos;/api/bat/member/&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: SyntaxError: Unnamed:1:9 Expected ; but found /api/bat/member/
+Baseurl &apos;/api/bat/member/&apos;
+         ^
+
+- org.graalvm.polyglot.Context.eval(Context.java:425)
+- com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:141)
+- com.intuit.karate.graal.JsEngine.eval(JsEngine.java:137)
+- com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1344)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2373)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2292)
+- com.intuit.karate.core.ScenarioEngine.url(ScenarioEngine.java:365)
+
+classpath:com/big/features/APIfeatures/SCU/Core ISO XAPI/Core_ISO_XAPI.feature:18
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl + &apos;/healthcheck&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;Baseurl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/Core ISO XAPI/Core_ISO_XAPI.feature:24
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl &apos;/api/bat/member/&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: SyntaxError: Unnamed:1:9 Expected ; but found /api/bat/member/
+Baseurl &apos;/api/bat/member/&apos;
+         ^
+
+- org.graalvm.polyglot.Context.eval(Context.java:425)
+- com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:141)
+- com.intuit.karate.graal.JsEngine.eval(JsEngine.java:137)
+- com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1344)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2373)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2292)
+- com.intuit.karate.core.ScenarioEngine.url(ScenarioEngine.java:365)
+
+classpath:com/big/features/APIfeatures/SCU/Core ISO XAPI/Core_ISO_XAPI.feature:30
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl + &apos;/healthcheck&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;Baseurl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/Core ISO XAPI/Core_ISO_XAPI.feature:36
+js failed:
+&gt;&gt;&gt;&gt;
+01: BaseUrl
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;BaseUrl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/Core ISO XAPI/Core_ISO_XAPI.feature:43
+no step-definition method match found for: I am on Login page
+classpath:com/big/features/APIfeatures/SCU/GoogleTest.feature:10
+no step-definition method match found for: I am on google page
+classpath:com/big/features/APIfeatures/SCU/GoogleTest.feature:16
+no step-definition method match found for: I am on google page
+classpath:com/big/features/APIfeatures/SCU/GoogleTest.feature:16
+no step-definition method match found for: def Baseurl =&apos;https://bat-xapi.ca-c1.cloudhub.io/api/v1&apos;
+classpath:com/big/features/APIfeatures/BAT-API/Submission.feature:3
+no step-definition method match found for: def Baseurl =&apos;https://bat-xapi.ca-c1.cloudhub.io/api/v1&apos;
+classpath:com/big/features/APIfeatures/BAT-API/Submission.feature:3
+no step-definition method match found for: def Baseurl =&apos;https://bat-xapi.ca-c1.cloudhub.io/api/v1&apos;
+classpath:com/big/features/APIfeatures/BAT-API/Submission.feature:3
+no step-definition method match found for: def Baseurl =&apos;https://bat-xapi.ca-c1.cloudhub.io/api/v1&apos;
+classpath:com/big/features/APIfeatures/BAT-API/Submission.feature:3
+no step-definition method match found for: I am on Google home Page
+classpath:com/big/features/APIfeatures/SCU/DataTable.feature:7
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl &apos;/api/bat/member/&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: SyntaxError: Unnamed:1:9 Expected ; but found /api/bat/member/
+Baseurl &apos;/api/bat/member/&apos;
+         ^
+
+- org.graalvm.polyglot.Context.eval(Context.java:425)
+- com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:141)
+- com.intuit.karate.graal.JsEngine.eval(JsEngine.java:137)
+- com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1344)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2373)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2292)
+- com.intuit.karate.core.ScenarioEngine.url(ScenarioEngine.java:365)
+
+classpath:com/big/features/APIfeatures/SCU/TOKEN -XAPI/Token.feature:6
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl + &apos;/healthcheck&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;Baseurl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/TOKEN -XAPI/Token.feature:12
+js failed:
+&gt;&gt;&gt;&gt;
+01: BaseUrl
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: ReferenceError: &quot;BaseUrl&quot; is not defined
+- &lt;js&gt;.:program(Unnamed:1)
+
+classpath:com/big/features/APIfeatures/SCU/TOKEN -XAPI/Token.feature:19
+no step-definition method match found for: def Baseurl =&apos;http://credit-card-xapi.ca-c1.cloudhub.io/api/v1&apos;
+classpath:com/big/features/APIfeatures/CC-API/Read_Accounts.feature:3
+no step-definition method match found for: def Baseurl =&apos;http://credit-card-xapi.ca-c1.cloudhub.io/api/v1&apos;
+classpath:com/big/features/APIfeatures/CC-API/Read_Accounts.feature:3
+no step-definition method match found for: def Baseurl =&apos;http://credit-card-xapi.ca-c1.cloudhub.io/api/v1&apos;
+classpath:com/big/features/APIfeatures/CC-API/Read_Accounts.feature:3
+no step-definition method match found for: def Baseurl =&apos;http://credit-card-xapi.ca-c1.cloudhub.io/api/v1&apos;
+classpath:com/big/features/APIfeatures/CC-API/Read_Accounts.feature:3
+no step-definition method match found for: def Baseurl =&apos;http://credit-card-xapi.ca-c1.cloudhub.io/api/v1&apos;
+classpath:com/big/features/APIfeatures/CC-API/Read_Accounts.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/SCU/FIS-SAPI/FIS-SAPI.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/SCU/FIS-SAPI/FIS-SAPI.feature:3
+no step-definition method match found for: def Baseurl =&apos;&apos;
+classpath:com/big/features/APIfeatures/SCU/FIS-SAPI/FIS-SAPI.feature:3
+js failed:
+&gt;&gt;&gt;&gt;
+01: Baseurl &apos;/api/bat/member/&apos;
+&lt;&lt;&lt;&lt;
+org.graalvm.polyglot.PolyglotException: SyntaxError: Unnamed:1:9 Expected ; but found /api/bat/member/
+Baseurl &apos;/api/bat/member/&apos;
+         ^
+
+- org.graalvm.polyglot.Context.eval(Context.java:425)
+- com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:141)
+- com.intuit.karate.graal.JsEngine.eval(JsEngine.java:137)
+- com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1344)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2373)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2292)
+- com.intuit.karate.core.ScenarioEngine.url(ScenarioEngine.java:365)
+
+classpath:com/big/features/APIfeatures/SCU/TOKEN -SAPI/TokenSAPI.feature:6
+no step-definition method match found for: match responseStatus 200
+classpath:com/big/features/APIfeatures/SCU/Village Branch Service XAPI/Village_Branch_XAPI.feature:8
+match failed: EACH_EQUALS
+  $ | match each failed at index 7 (LIST:STRING)
+  [&quot;Red Deer&quot;,&quot;Red Deer&quot;,&quot;Red Deer&quot;,&quot;Red Deer&quot;,&quot;Red Deer&quot;,&quot;Red Deer&quot;,&quot;Red Deer&quot;,&quot;Redcliff&quot;,&quot;Red Deer&quot;,&quot;Red Deer&quot;,&quot;Red Deer&quot;,&quot;Red Deer&quot;,&quot;Red Deer&quot;,&quot;Red Deer&quot;]
+  &apos;Red Deer&apos;
+
+    $[7] | not equal (STRING:STRING)
+    &apos;Redcliff&apos;
+    &apos;Red Deer&apos;
+
+classpath:com/big/features/APIfeatures/SCU/Village Branch Service XAPI/Village_Branch_XAPI.feature:37 expected [48] but found [0]
+	at org.testng.Assert.fail(Assert.java:110)
+	at org.testng.Assert.failNotEquals(Assert.java:1413)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:149)
+	at org.testng.Assert.assertEquals(Assert.java:131)
+	at org.testng.Assert.assertEquals(Assert.java:1240)
+	at com.big.TestRunners.KarateRunner.testParallel(KarateRunner.java:21)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.testng.junit.JUnit4TestRunner.start(JUnit4TestRunner.java:71)
+	at org.testng.junit.JUnit4TestRunner.run(JUnit4TestRunner.java:56)
+	at org.testng.TestRunner$1.run(TestRunner.java:681)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.runJUnitWorkers(TestRunner.java:887)
+	at org.testng.TestRunner.privateRunJUnit(TestRunner.java:710)
+	at org.testng.TestRunner.run(TestRunner.java:601)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:429)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:423)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:383)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:326)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1249)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.runSuites(TestNG.java:1092)
+	at org.testng.TestNG.run(TestNG.java:1060)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:102)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:91)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+</pre></div></td>
+<td>19</td>
+<td>testParallel(com.big.TestRunners.KarateRunner)</td></tr>
+</table><p>
+</body>
+</html>
