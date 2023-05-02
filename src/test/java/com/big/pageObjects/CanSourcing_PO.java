@@ -209,7 +209,7 @@ public class CanSourcing_PO extends TestReusables {
 	{		
 		randomLname = "LastName" + RandomData("abcdefghijklmnopqrstuvwxyz",5);	
 		Last_Name.click();
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 		Last_Name.click();
 		enterText(Last_Name, "LastNameField", randomLname);	
 	}
