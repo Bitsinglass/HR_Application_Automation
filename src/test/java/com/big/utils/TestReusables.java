@@ -11,9 +11,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Random;
 import java.util.Set;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
@@ -30,12 +32,10 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
-
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
 import com.aventstack.extentreports.service.ExtentService;
 import com.aventstack.extentreports.service.ExtentTestManager;
-
 //import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -87,11 +87,32 @@ public class TestReusables {
 				ExtentTestManager.getTest().log(Status.FAIL, "Text: \""+text+"\" not entered in "+eleName+" field");
 		}
 	}
+	
+	public void fileUpload(String ele, String eleName, String text) {
+		try {
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ele)));
+		
+		driver.findElement(By.xpath(ele)).sendKeys(text);
+		if(testType.equalsIgnoreCase("Cucumber"))
+		ExtentCucumberAdapter.addTestStepLog("Entered text: \""+text+"\" in "+eleName+" field");
+		else
+		ExtentTestManager.getTest().log(Status.PASS, "Entered text: \""+text+"\" in "+eleName+" field");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			if(testType.equalsIgnoreCase("Cucumber"))
+				ExtentCucumberAdapter.addTestStepLog("Text: \""+text+"\" not entered in "+eleName+" field");
+			else
+				ExtentTestManager.getTest().log(Status.FAIL, "Text: \""+text+"\" not entered in "+eleName+" field");
+		}
+	}
 
 	public void click(WebElement ele, String eleName) {
 		try {
 		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.visibilityOf(ele));
+		wait.until(ExpectedConditions.elementToBeClickable(ele));
 		ele.click();
 		if(testType.equalsIgnoreCase("Cucumber"))
 			ExtentCucumberAdapter.addTestStepLog("Element "+eleName+" clicked");
@@ -130,7 +151,8 @@ public class TestReusables {
 	public void selectByText(WebElement ele, String eleName, String value) {
 		try {
 		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.visibilityOf(ele));
+//		wait.until(ExpectedConditions.visibilityOf(ele));
+		wait.until(ExpectedConditions.elementToBeClickable(ele));
 		Select select = new Select(ele);
 		select.selectByVisibleText(value);
 		if(testType.equalsIgnoreCase("Cucumber"))
@@ -144,8 +166,7 @@ public class TestReusables {
 			if(testType.equalsIgnoreCase("Cucumber"))
 				ExtentCucumberAdapter.addTestStepLog("Option "+value+" not selected from "+eleName+" Dropdown");
 				else
-				ExtentTestManager.getTest().log(Status.FAIL, "Option "+value+" not selected from "+eleName+" Dropdown");
-				
+				ExtentTestManager.getTest().log(Status.FAIL, "Option "+value+" not selected from "+eleName+" Dropdown");				
 		}
 	}
 	
@@ -158,8 +179,7 @@ public class TestReusables {
 		if(testType.equalsIgnoreCase("Cucumber"))
 			ExtentCucumberAdapter.addTestStepLog("Index "+value+" selected from "+eleName+" Dropdown");
 			else
-			ExtentTestManager.getTest().log(Status.PASS, "Index "+value+" selected from "+eleName+" Dropdown");
-			
+			ExtentTestManager.getTest().log(Status.PASS, "Index "+value+" selected from "+eleName+" Dropdown");		
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -505,7 +525,6 @@ public class TestReusables {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 	
 	public void keyboardActionsusingRobot(WebElement ele, int key) {
@@ -531,7 +550,23 @@ public class TestReusables {
 		}
 	}
 	
-	
-	
+	public String RandomData(String Type, int len) {	
+		String randomTypedATA = Type;
+		
+//		String upperAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//	    String lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";	
+//	    String numbers = "0123456789";		    
+		StringBuilder sb = new StringBuilder();
+		Random random = new Random();	
 
+		for(int i = 0; i < len; i++)
+		{
+			int index = random.nextInt(randomTypedATA.length());
+			char randomChar = randomTypedATA.charAt(index);
+			sb.append(randomChar);
+		 }		
+		String randomMname;		
+		return randomMname = sb.toString();
+	}
+	
 }
