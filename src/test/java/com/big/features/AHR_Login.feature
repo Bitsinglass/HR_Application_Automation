@@ -1,6 +1,7 @@
+
 Feature: Login to HR Application
   
-  @tag1
+@tag1  
   Scenario: Admin login with valid credentials
     Given I am on HRApp Login Screen
     When I enter Username and Password

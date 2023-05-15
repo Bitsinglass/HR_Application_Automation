@@ -14,6 +14,7 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -59,6 +60,77 @@ public class TestReusables {
 		}
     }
     
+   //---------Random Number Method---------------
+  	public int rand_Number() {
+  		int min = 1;  
+  		int max = 10;
+  		int rand_Num = (int)(Math.random()*(max-min+1)+min);
+  	    return rand_Num; 
+  	}
+    
+  //----------Random DDL Value Method-----------
+  	public int rand_ddl(int max1) {
+  		int min = 1;  
+  		int max = max1;
+  		int rand_Num = (int)(Math.random()*(max-min+1)+min);
+  	    return rand_Num; 
+  	}
+  	
+  	public void textEditor(WebElement ele, String text) {
+		 try {
+			  driver.switchTo().frame(ele);
+			  driver.findElement(By.tagName("body")).sendKeys(text);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
+  	
+  	public void enterTextUnsingJS(WebElement ele, String eleName, String eleText) {
+        try {
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOf(ele));
+        String script = String.format("arguments[0].value='%s';", eleText);
+        driver.executeScript(script, ele);
+        if(testType.equalsIgnoreCase("Cucumber"))
+            ExtentCucumberAdapter.addTestStepLog("Entered text: \""+eleText+"\" in "+eleName+" field");
+            else
+            ExtentTestManager.getTest().log(Status.PASS, "Entered text: \""+eleText+"\" in "+eleName+" field");
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+                if(testType.equalsIgnoreCase("Cucumber"))
+                    ExtentCucumberAdapter.addTestStepLog("Text: \""+eleText+"\" not entered in "+eleName+" field");
+                else
+                    ExtentTestManager.getTest().log(Status.FAIL, "Text: \""+eleText+"\" not entered in "+eleName+" field");
+            }
+    }
+  	
+    public void Writeintoreport(String text)
+    {
+        try {
+        if(testType.equalsIgnoreCase("Cucumber"))
+            ExtentCucumberAdapter.addTestStepLog(text);
+            else
+            ExtentTestManager.getTest().log(Status.PASS, text);
+            
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            if(testType.equalsIgnoreCase("Cucumber"))
+                ExtentCucumberAdapter.addTestStepLog(text);
+                else
+                ExtentTestManager.getTest().log(Status.FAIL, text);
+                
+        }
+        
+    }
+    
+  //----------Random String Method--------------
+  	public String rand_String(int str_Len) {
+  		String rand_Str = RandomStringUtils.randomAlphabetic(str_Len);
+  	    return rand_Str; 
+  	}
+    
 	public void closeBrowser() {
 		try {
 		 driver.close();
@@ -67,6 +139,16 @@ public class TestReusables {
 			e.printStackTrace();
 		}
 	}
+	
+	//-----------Page Loader Method-----------
+		public void pageLoader(WebElement ele) {
+			 try {
+					WebDriverWait wait = new WebDriverWait(driver,  Duration.ofSeconds(300));
+					  wait.until(ExpectedConditions.invisibilityOf(ele));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		}
 	
 	public void enterText(WebElement ele, String eleName, String text) {
 		try {

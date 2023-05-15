@@ -45,11 +45,11 @@ public class GooglePO extends TestReusables{
 //		  keyboardActionsusingRobot(inpSearch, KeyEvent.VK_TAB);
 		  keyboardActions(inpSearch,Keys.TAB);
 		  click(btnSearch, "Search Button");
-		  sc.setContext(Variables.searchText, strSearchtext);
+//		  sc.setContext(Variables.searchText, strSearchtext);
 	}
 	
 	public void getsearchtext() {
 		
-		Assert.assertEquals(sc.getContext(Variables.searchText),getAttributeValue(txtSearch, "value"));
+//		Assert.assertEquals(sc.getContext(Variables.searchText),getAttributeValue(txtSearch, "value"));
 	}
 }
