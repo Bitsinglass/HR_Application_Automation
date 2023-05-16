@@ -1,14 +1,20 @@
 package com.big.pageObjects;
 
+
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.Random;
 import org.apache.commons.collections4.bag.SynchronizedSortedBag;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,6 +33,9 @@ public class CanSourcing_PO extends TestReusables {
 	static String CaseID = "";	
 	
 	// WEB ELEMENTS
+	@FindBy(xpath ="//div[@class='loader']")
+	WebElement Loader;
+	
 	@FindBy(xpath ="//li[@data-test-id='201812201359010458611']/a")
 	WebElement Create_Button;
 	
@@ -72,7 +81,7 @@ public class CanSourcing_PO extends TestReusables {
 	@FindBy(xpath ="//div[@node_name='CandidatePersonalDetails']//textarea[@id='d8f94de3']")
 	WebElement Notes;
 	
-	@FindBy(xpath ="//div[@node_name='CandidatePersonalDetails']//button[text()='  Attach ']")
+	@FindBy(xpath ="//div[@id='uniqueIDforMultiFilePath']//input[@type='file']")
 	WebElement Attachment;
 	
 	@FindBy(xpath ="//div[@id='uniqueIDforMultiFilePath']//input[@type='file']")
@@ -169,7 +178,7 @@ public class CanSourcing_PO extends TestReusables {
 	WebElement First_Case_ID;
 					
 	
-	//OBJECTS METHODS
+	//OBJECTS METHODs
 	public void Click_Create_Button() throws InterruptedException
 	{
 		movetoElement(Create_Button);
@@ -209,7 +218,7 @@ public class CanSourcing_PO extends TestReusables {
 	{		
 		randomLname = "LastName" + RandomData("abcdefghijklmnopqrstuvwxyz",5);	
 		Last_Name.click();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		Last_Name.click();
 		enterText(Last_Name, "LastNameField", randomLname);	
 	}
@@ -239,16 +248,22 @@ public class CanSourcing_PO extends TestReusables {
 	
 	public void Enter_Country(String con) throws InterruptedException
 	{
-		selectByText(Country, "CountryDD", con);;
+		pageLoader(Loader);
+		selectByText(Country, "CountryDD", con);
 	}
 	
 	public void Enter_State(String state) throws InterruptedException
 	{
+		pageLoader(Loader);
+		Thread.sleep(5000);
 		selectByText(State, "StateDD", state);
+		
 	}
 	
 	public void Enter_City(String city) throws InterruptedException
 	{
+		Thread.sleep(5000);
+		pageLoader(Loader);
 		selectByText(City, "CityDD", city);
 	}
 	
@@ -261,13 +276,13 @@ public class CanSourcing_PO extends TestReusables {
 	{
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(JobID));
-		
+		Thread.sleep(3000);
 		click(JobID, "JobID_DD");
 		PressSpecialKey(JobID, "Down");
 		List<WebElement> jobs = driver.findElements(By.xpath("//table[@pl_prop_class='BIG-HRM-Data-JobPost']//tr"));		
 		int jobs_size = jobs.size();
 		ThreadLocalRandom random = ThreadLocalRandom.current();
-		int rand = random.nextInt(1, jobs_size);		
+		int rand = random.nextInt(1, jobs_size-1);		
 		jobs.get(rand).click();
 		Thread.sleep(2000);
 	}
@@ -281,6 +296,8 @@ public class CanSourcing_PO extends TestReusables {
 	public void Enter_Attachment() throws InterruptedException, IOException
 	{
 		Thread.sleep(2000);
+//		fileUpload(""+Attachment+"","Resume",""+System.getProperty("user.dir")+"\\hr_Resume\\RESUME-HR.docx");
+//		fileUpload("//div[@id='uniqueIDforMultiFilePath']//input[@type='file']","Resume",""+System.getProperty("user.dir")+"\\hr_Resume\\RESUME-HR.docx");
 		fileUpload("//div[@id='uniqueIDforMultiFilePath']//input[@type='file']","ResumeUpload","C:\\Users\\manpreet.kaur_bitsin\\Desktop\\RESUME-HR.docx");						
 	}
 	
@@ -294,6 +311,7 @@ public class CanSourcing_PO extends TestReusables {
 	
 	public void Enter_Primary_Mobile_No() throws InterruptedException
 	{
+		pageLoader(Loader);
 		String randomPrinum = RandomData("0123456789",10);	
 		enterText(Primary_Mobile_No, "Primary_Num", randomPrinum);
 		Thread.sleep(2000);
@@ -332,6 +350,7 @@ public class CanSourcing_PO extends TestReusables {
 	
 	public void Enter_Current_Company(String company) throws InterruptedException
 	{
+		pageLoader(Loader);
 		enterText(Current_Company, "Current Company", company);
 		Thread.sleep(2000);
 	}
@@ -401,15 +420,18 @@ public class CanSourcing_PO extends TestReusables {
 	{
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(Source));
+		Thread.sleep(5000);
 		click(Source,"Source_DD");
 		List<WebElement> source_values = driver.findElements(By.xpath("//select[@id='9a7691e7']/option"));		
 		int source_size = source_values.size();																												
 		ThreadLocalRandom random = ThreadLocalRandom.current();
 		int rand_source = random.nextInt(1, source_size);	
-		Thread.sleep(5000);
+		Thread.sleep(4000);
 		selectByIndex(Source, "Source", rand_source);
+		Thread.sleep(5000);
 		
-		if (rand_source == 9)
+//		if (Source.getText().equalsIgnoreCase("Referral"))	
+		if (getSelectedOption(Source,"SourceDD").equalsIgnoreCase("Referral")) 
 		{
 			Thread.sleep(1000);
 			Emp_ID_Ref.sendKeys("CTPL1234");
@@ -474,5 +496,28 @@ public class CanSourcing_PO extends TestReusables {
 		String FirstcaseID = getText(First_Case_ID);
 		System.out.println(FirstcaseID);
 		return FirstcaseID;
-	}		
+	}	
+	
+//	public void Write_CSID_Excel() throws IOException
+//	{
+//		FileInputStream xl = new FileInputStream("C:\\Users\\manpreet.kaur_bitsin\\Desktop\\Java Backup\\HR_Pro_Files\\HRCandidates.ods");
+//		XSSFWorkbook workbook = new XSSFWorkbook(xl);
+//	    XSSFSheet sheet = workbook.getSheetAt(0);
+//	    int rows = sheet.getLastRowNum();
+//        int cols = sheet.getRow(0).getLastCellNum();
+//        
+//        for(int row=1;row<=rows;row++)
+//        {
+//        	
+//        }
+//        
+//        File file = new File("C:\\Users\\manpreet.kaur_bitsin\\Desktop\\Java Backup\\HR_Pro_Files\\HRCandidates.ods");
+//        
+//	    FileOutputStream outputStream = new FileOutputStream(file);
+//	    workbook.write(outputStream);
+//	    outputStream.close();
+//	    workbook.close();
+//	    System.out.println("File written successfully");
+//	}
+	
 }

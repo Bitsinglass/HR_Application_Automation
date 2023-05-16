@@ -105,6 +105,29 @@ public class TestReusables {
             }
     }
   	
+  	public String getSelectedOption(WebElement ele, String eleName) {
+		String value = "";
+		try {
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.visibilityOf(ele));
+		Select select = new Select(ele);
+		value = select.getFirstSelectedOption().getText();
+		if(testType.equalsIgnoreCase("Cucumber"))
+			ExtentCucumberAdapter.addTestStepLog("Index "+value+" selected from "+eleName+" Dropdown");
+			else
+			ExtentTestManager.getTest().log(Status.PASS, "Index "+value+" selected from "+eleName+" Dropdown");		
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			if(testType.equalsIgnoreCase("Cucumber"))
+				ExtentCucumberAdapter.addTestStepLog("Index "+value+" not selected from "+eleName+" Dropdown");
+				else
+				ExtentTestManager.getTest().log(Status.FAIL, "Index "+value+" not selected from "+eleName+" Dropdown");
+				
+		}
+		return value;
+	}
+  	
     public void Writeintoreport(String text)
     {
         try {
