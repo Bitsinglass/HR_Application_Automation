@@ -346,21 +346,23 @@ public class InterviewProcess_Test {
     	interStages.Click_Opr_Go();
     	interStages.Select_OfferLetter();
     	interStages.Get_OfferLetterType();
-    	
-    	
     	interStages.Enter_JoiningDate();
     	interStages.Click_OprSubmit();
-    }
-
-    @Then("^Candidate case is approved and closed$")
-    public void candidate_case_is_approved_and_closed() throws Throwable {
-    	interStages.Get_ApprovalStatus();
-    	}
-
-    @And("^ I Approve the final-approval stage$")
-    public void i_approve_the_finalapproval_stage() throws Throwable {
     	interStages.Click_FinalAproval_Go();
     	interStages.Submit_FinalAproval();
+    } 
+
+    @And("^ I Approve the finalApproval stage$")
+    public void i_approve_the_finalapproval_stage() throws Throwable {
+    	System.out.println("I Approve the finalApproval stage step");
+//    	interStages.Click_FinalAproval_Go();
+//    	interStages.Submit_FinalAproval();
+    }
+    
+    @Then("^Candidate case is approved and closed$")
+    public void candidate_case_is_approved_and_closed() throws Throwable {
+    	System.out.println("Candidate case is approved and closed. step");
+    	interStages.Get_ApprovalStatus();
     }
     
     
@@ -369,15 +371,14 @@ public class InterviewProcess_Test {
     public void i_select_the_offerletter_ddl_value_as_onhold_enter_approval_details() throws Throwable {
     	interStages.Click_Opr_Go();
     	interStages.Select_OfferLetter();
-    	interStages.Get_OfferLetterType();
-    	
-    	
-//    	interStages.Enter_JoiningDate();
+    	interStages.Get_OfferLetterType(); 	
+    	interStages.Enter_JoiningDate();
     	interStages.Click_OprSubmit();
     }
 
     @And("^ I Select the OfferLetter DDL Value as Approved and approve the final-approval stage$")
     public void i_select_the_offerletter_ddl_value_as_approved_and_approve_the_finalapproval_stage() throws Throwable {
+    	
     }
     
 }

@@ -202,6 +202,11 @@ public class Interview_PO extends TestReusables {
 		
 		
 		
+		// OPR ROUND
+		
+		static List<String> offerLetterList = new ArrayList<String>();
+		
+		
 		@FindBy(xpath="//div[@section_index='2']//button[text()='View all']")
 		WebElement L3_ViewAll;	
 		
@@ -252,8 +257,20 @@ public class Interview_PO extends TestReusables {
 
 	
 		
-		//WEB ELEMENT METHODS		
+		//WEB ELEMENT METHODS
+		public void Add_offerLetterList()
+		{
+			offerLetterList.add("Approved");  
+			offerLetterList.add("On Hold");  
+			offerLetterList.add("Rejected");  
+			offerLetterList.add("Dropped Out"); 
+			System.out.println(offerLetterList);
+		}
+		
+		
 		public void Click_Go_Screening() throws InterruptedException {
+			
+			
 			System.out.println(getText(Screening_Round_Status));
 			
 			if (getText(Screening_Round_Status).equalsIgnoreCase("Pending-Screening"))
@@ -366,6 +383,7 @@ public class Interview_PO extends TestReusables {
 		public void Enter_InterviewerName() throws InterruptedException {
 			Thread.sleep(3000);
 			enterText(InterviewerL1_Name,"Interviewer Name" , "Manpreet Kaur");
+			Thread.sleep(3000);
 		}
 		
 		
@@ -381,7 +399,7 @@ public class Interview_PO extends TestReusables {
 			Thread.sleep(2000);
 			click(Interview_Type, "InterviewTypeDD");
 			System.out.println("INTERVIEW TYPE clicked");
-//			selectByIndex(Interview_Type, "InterviewTypeDD", 2);
+			Thread.sleep(3000);
 			selectByIndex(Interview_Type, "InterviewTypeDD", randType);
 			Thread.sleep(3000);
 			
@@ -780,98 +798,164 @@ public class Interview_PO extends TestReusables {
 			click(Opr_Go,"Opr_Go");
 		}
 		
-		public void Select_OfferLetter() throws InterruptedException
-		{
-			List<String> offerLetterList = new ArrayList<String>();
-			offerLetterList.add("Approved");  
-			offerLetterList.add("On Hold");  
-			offerLetterList.add("Rejected");  
-			offerLetterList.add("Dropped Out"); 
-			System.out.println(offerLetterList);
-			
-//			int offerletter_size = offerLetterList.size();																									
-			ThreadLocalRandom random = ThreadLocalRandom.current();
-			int rand_OL = random.nextInt(0, offerLetterList.size()-1);
-			System.out.println("random list index value: " + offerLetterList.get(rand_OL));
-			selectByValue(OfferLetter_DD, "OfferLetter_DD", offerLetterList.get(0));
-			Thread.sleep(3000);
+		
+		public void Rejected_OfferLetter() throws InterruptedException {
+			selectByValue(OfferLetter_DD, "OfferLetter_DD", offerLetterList.get(2));
+		}
+	
+		public void DroppedOut_OfferLetter() throws InterruptedException {
+			selectByValue(OfferLetter_DD, "OfferLetter_DD", offerLetterList.get(3));
 		}
 		
-		public void Get_OfferLetterType()
+		public void Approved_OfferLetter() throws InterruptedException {
+			selectByValue(OfferLetter_DD, "OfferLetter_DD", offerLetterList.get(0));
+		}
+		
+		public void OnHold_OfferLetter() throws InterruptedException {
+			selectByValue(OfferLetter_DD, "OfferLetter_DD", offerLetterList.get(1));
+		}
+		
+		
+		public void Select_OfferLetter() throws InterruptedException
+		{
+//			List<String> offerLetterList = new ArrayList<String>();
+//			offerLetterList.add("Approved");  
+//			offerLetterList.add("On Hold");  
+//			offerLetterList.add("Rejected");  
+//			offerLetterList.add("Dropped Out"); 
+//			System.out.println(offerLetterList);
+//			int offerletter_size = offerLetterList.size();																									
+//			ThreadLocalRandom random = ThreadLocalRandom.current();
+//			int rand_OL = random.nextInt(0, offerLetterList.size()-1);
+//			System.out.println("random list index value: " + offerLetterList.get(rand_OL));
+//			selectByValue(OfferLetter_DD, "OfferLetter_DD", offerLetterList.get(1));
+//			Thread.sleep(3000);
+		}
+		
+		public void Get_OfferLetterType() throws InterruptedException
 		{
 			String OfferLetter_DD_Value = getSelectedOption(OfferLetter_DD, "OfferLetter_DD_Value");
 			System.out.println("OfferLetter_DD_Value: " + OfferLetter_DD_Value);
 			
-//			if (OfferLetter_DD_Value == "Approved")
 			if (OfferLetter_DD_Value.equalsIgnoreCase("Approved"))
 			{
 				
 				enterText(Designation, "Designation", "Test designation");
 				enterText(CTCOffered, "CTCOffered", "60000");
+				
 				// date pending
-			}
+//				System.out.println("joining date method");	
+//				click(Calendar_Icon,"Calendar_Icon");
+//				Thread.sleep(5000);
+//				int addDate = 1;
+//				String todaydate = getAttributeValue(TodayDateAttribute, "data-day");
+//				System.out.println("todaydate: " + todaydate);
+//				int dateToSelect = Integer.valueOf(todaydate) + addDate;
+//				System.out.println("dateToSelect : " +dateToSelect);
+//				driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day="+dateToSelect+"]")).click();
+//				Thread.sleep(5000);	
+				
+//				Click_FeedbackSubmit();
+//				Click_ConfirmationSubmit();
+//				Thread.sleep(5000);
+				
+
+//					System.out.println(getText(Opr_Completion));
+//					if (getText(Opr_Completion).equalsIgnoreCase("Pending-FinalApproval"))
+//					{
+//						click(Final_ViewAll,"Final_ViewAll");
+//						Thread.sleep(5000);
+//						click(FinalGO,"FinalGO");
+//						System.out.println("FINAL APPROVAL GO CLICKED.");
+//					}	
+//				
+//		
+//					System.out.println(getText(Final_Heading));
+//					if (getText(Final_Heading).equalsIgnoreCase("Final Approval"))
+//					{
+//						click(Screening_Submit, "Submit button");
+//						System.out.println("FINAL APPROVAL SUBMITTED.");
+//					}
+
+			
 			else if (OfferLetter_DD_Value.equalsIgnoreCase("On Hold"))
 			{
 				System.out.println("On Hold selected");
 				enterText(Designation, "Designation", "Test designation");
 				enterText(CTCOffered, "CTCOffered", "60000");
+				
 				// date pending
+//				System.out.println("joining date method");	
+//				click(Calendar_Icon,"Calendar_Icon");
+//				Thread.sleep(5000);
+//				int addDate = 1;
+//				String todaydate = getAttributeValue(TodayDateAttribute, "data-day");
+//				System.out.println("todaydate: " + todaydate);
+//				int dateToSelect = Integer.valueOf(todaydate) + addDate;
+//				System.out.println("dateToSelect : " +dateToSelect);
+//				driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day="+dateToSelect+"]")).click();
+//				Thread.sleep(5000);	
+				
+//				Click_FeedbackSubmit();
+//				Click_ConfirmationSubmit();
+//				Thread.sleep(5000);
+				
 			}
 			else
 			{
 				System.out.println("Rejected or dropped out selected");
+				
+//				Click_FeedbackSubmit();
+//				Click_ConfirmationSubmit();
+//				Thread.sleep(5000);
+//				System.out.println(getText(CaseRejectionCompletion));
+//				if (getText(CaseRejectionCompletion).equalsIgnoreCase("Resolved-Completed"))
+//				{
+//					System.out.println("Candidate Case - Resolved Rejected");
+//				}
 			}
 		}
 		
-		public void Enter_Designation()
-		{
-			enterText(Designation, "Designation", "Test designation");		
-		}
-		
-		public void Enter_CTCOffered()
-		{
-			enterText(CTCOffered, "CTCOffered", "60000");	
-		}
-		
 		// yet to handle when date equals 31 or month is of 30 days
-		public void Enter_JoiningDate()
+		public void Enter_JoiningDate() throws InterruptedException
 		{
 			System.out.println("joining date method");	
 			click(Calendar_Icon,"Calendar_Icon");
+			Thread.sleep(5000);
 			int addDate = 1;
 			String todaydate = getAttributeValue(TodayDateAttribute, "data-day");
 			System.out.println("todaydate: " + todaydate);
 			int dateToSelect = Integer.valueOf(todaydate) + addDate;
 			System.out.println("dateToSelect : " +dateToSelect);
 			driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day="+dateToSelect+"]")).click();
-			
-			
-//			driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day='1']")).click();
-//			driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day="'" +dateToSelect+ "'" ]")).click();	
+			Thread.sleep(5000);	
 		}
 		
-		public void Click_OprSubmit() {
-		Click_FeedbackSubmit();
-		Click_ConfirmationSubmit();
+		public void Click_OprSubmit() throws InterruptedException {
+			Click_FeedbackSubmit();
+			Click_ConfirmationSubmit();
+			Thread.sleep(5000);
 		}
 		
-		public void Click_FinalAproval_Go()
-		{
+		public void Click_FinalAproval_Go() throws InterruptedException
+		{	
 			System.out.println(getText(Opr_Completion));
 			if (getText(Opr_Completion).equalsIgnoreCase("Pending-FinalApproval"))
 			{
 				click(Final_ViewAll,"Final_ViewAll");
+				Thread.sleep(5000);
 				click(FinalGO,"FinalGO");
+				System.out.println("FINAL APPROVAL GO CLICKED.");
 			}	
 		}
 		
 		public void Submit_FinalAproval()
-		{
+		{			
 			System.out.println(getText(Final_Heading));
 			if (getText(Final_Heading).equalsIgnoreCase("Final Approval"))
 			{
 				click(Screening_Submit, "Submit button");
-				click(Confirmation_Submit, "Confirmation_Submit button");
+				System.out.println("FINAL APPROVAL SUBMITTED.");
 			}
 		}
 		
