@@ -219,6 +219,10 @@ public class Interview_PO extends TestReusables {
 		@FindBy(xpath="//select[@data-test-id='202212220330170582676']")
 		WebElement OfferLetter_DD;
 		
+		
+		@FindBy(xpath="//select[@data-test-id='202302210713070876266']")
+		WebElement FinalOfferLetter_DD;
+		
 		@FindBy(xpath="//img[@name='CalendarImg-de6196fe']")
 		WebElement JoiningCalendar;
 		
@@ -272,7 +276,6 @@ public class Interview_PO extends TestReusables {
 			
 			
 			System.out.println(getText(Screening_Round_Status));
-			
 			if (getText(Screening_Round_Status).equalsIgnoreCase("Pending-Screening"))
 			{
 				Thread.sleep(3000);
@@ -280,13 +283,6 @@ public class Interview_PO extends TestReusables {
 			}	
 			System.out.println("Screening go button clicked");
 		}
-		
-//		public String Get_ScreeningFeedback_Heading() {
-//			String Screen_Heading = getText(Screening_FBHeading);
-//			System.out.println("SCREEN FBACK HEADING: " +Screen_Heading);	
-//			return Screen_Heading;
-//		}	
-	
 		
 		public void Approve_Screening() throws InterruptedException
 		{
@@ -337,9 +333,7 @@ public class Interview_PO extends TestReusables {
 		
 		public void Get_ScreeningCompletion()
 		{
-//			String screen_msg = "";	
 			try {
-//				screen_msg = getText(Screening_CompletionMsg);
 				if (getText(Screening_CompletionMsg).equalsIgnoreCase("Candidate screening is completed")) 
 				{
 					System.out.println("Candidate screening stage is completed");
@@ -349,7 +343,6 @@ public class Interview_PO extends TestReusables {
 				e.printStackTrace();
 			}		
 			System.out.println("screening completion msg displayed");
-//			return screen_msg;	
 		}
 		
 		public void Click_Go_ToEnterL1() throws InterruptedException
@@ -364,8 +357,7 @@ public class Interview_PO extends TestReusables {
 				click(InterviewerL1_Go_Btn,"Go Button to enter InterviewerL1 details");
 				System.out.println("L1 GO CLICKED");
 			}		
-		}
-		
+		}	
 		
 		public void Enter_InterviewerEmail() throws InterruptedException 
 		{
@@ -411,7 +403,6 @@ public class Interview_PO extends TestReusables {
 			{
 				Thread.sleep(2000);
 				enterTextUnsingJS(Meeting_Link,"Meeting URL for online interview" , "test meeting Link");
-//				enterText(Meeting_Link,"Meeting URL for online interview" , "test meeting Link");
 				System.out.println("INTERVIEW TYPE ENTERED - online");
 				Thread.sleep(3000);
 			}
@@ -419,7 +410,6 @@ public class Interview_PO extends TestReusables {
 			{
 				Thread.sleep(2000);
 				enterTextUnsingJS(Address,"Interview location for offline round" , "interview location");			
-//				enterText(Address,"Interview location for offline round" , "interview location");
 				System.out.println("INTERVIEW TYPE ENTERED - offline");
 				Thread.sleep(3000);
 			}	
@@ -844,38 +834,37 @@ public class Interview_PO extends TestReusables {
 				enterText(CTCOffered, "CTCOffered", "60000");
 				
 				// date pending
-//				System.out.println("joining date method");	
-//				click(Calendar_Icon,"Calendar_Icon");
-//				Thread.sleep(5000);
-//				int addDate = 1;
-//				String todaydate = getAttributeValue(TodayDateAttribute, "data-day");
-//				System.out.println("todaydate: " + todaydate);
-//				int dateToSelect = Integer.valueOf(todaydate) + addDate;
-//				System.out.println("dateToSelect : " +dateToSelect);
-//				driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day="+dateToSelect+"]")).click();
-//				Thread.sleep(5000);	
+				click(Calendar_Icon,"Calendar_Icon");
+				Thread.sleep(5000);
+				int addDate = 1;
+				String todaydate = getAttributeValue(TodayDateAttribute, "data-day");
+				System.out.println("todaydate: " + todaydate);
+				int dateToSelect = Integer.valueOf(todaydate) + addDate;
+				System.out.println("dateToSelect : " +dateToSelect);
+				driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day="+dateToSelect+"]")).click();
+				Thread.sleep(5000);	
 				
-//				Click_FeedbackSubmit();
-//				Click_ConfirmationSubmit();
-//				Thread.sleep(5000);
-				
+				Click_FeedbackSubmit();
+				Click_ConfirmationSubmit();
+				Thread.sleep(5000);
 
-//					System.out.println(getText(Opr_Completion));
-//					if (getText(Opr_Completion).equalsIgnoreCase("Pending-FinalApproval"))
-//					{
-//						click(Final_ViewAll,"Final_ViewAll");
-//						Thread.sleep(5000);
-//						click(FinalGO,"FinalGO");
-//						System.out.println("FINAL APPROVAL GO CLICKED.");
-//					}	
-//				
-//		
-//					System.out.println(getText(Final_Heading));
-//					if (getText(Final_Heading).equalsIgnoreCase("Final Approval"))
-//					{
-//						click(Screening_Submit, "Submit button");
-//						System.out.println("FINAL APPROVAL SUBMITTED.");
-//					}
+
+				System.out.println(getText(Opr_Completion));
+				if (getText(Opr_Completion).equalsIgnoreCase("Pending-FinalApproval"))
+				{
+					click(Final_ViewAll,"Final_ViewAll");
+					Thread.sleep(5000);
+					click(FinalGO,"FinalGO");
+					System.out.println("FINAL APPROVAL GO CLICKED.");
+				}	
+	
+				System.out.println(getText(Final_Heading));
+				if (getText(Final_Heading).equalsIgnoreCase("Final Approval"))
+				{
+					click(Screening_Submit, "Submit button");
+					System.out.println("FINAL APPROVAL SUBMITTED.");
+				}
+			}
 
 			
 			else if (OfferLetter_DD_Value.equalsIgnoreCase("On Hold"))
@@ -884,35 +873,54 @@ public class Interview_PO extends TestReusables {
 				enterText(Designation, "Designation", "Test designation");
 				enterText(CTCOffered, "CTCOffered", "60000");
 				
-				// date pending
-//				System.out.println("joining date method");	
-//				click(Calendar_Icon,"Calendar_Icon");
-//				Thread.sleep(5000);
-//				int addDate = 1;
-//				String todaydate = getAttributeValue(TodayDateAttribute, "data-day");
-//				System.out.println("todaydate: " + todaydate);
-//				int dateToSelect = Integer.valueOf(todaydate) + addDate;
-//				System.out.println("dateToSelect : " +dateToSelect);
-//				driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day="+dateToSelect+"]")).click();
-//				Thread.sleep(5000);	
+				// date pending	
+				click(Calendar_Icon,"Calendar_Icon");
+				Thread.sleep(5000);
+				int addDate = 1;
+				String todaydate = getAttributeValue(TodayDateAttribute, "data-day");
+				System.out.println("todaydate: " + todaydate);
+				int dateToSelect = Integer.valueOf(todaydate) + addDate;
+				System.out.println("dateToSelect : " +dateToSelect);
+				driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day="+dateToSelect+"]")).click();
+				Thread.sleep(5000);	
 				
-//				Click_FeedbackSubmit();
-//				Click_ConfirmationSubmit();
-//				Thread.sleep(5000);
+				Click_FeedbackSubmit();
+				Click_ConfirmationSubmit();
+				Thread.sleep(5000);
 				
+				System.out.println(getText(Opr_Completion));
+				if (getText(Opr_Completion).equalsIgnoreCase("Pending-FinalApproval"))
+				{
+					click(Final_ViewAll,"Final_ViewAll");
+					Thread.sleep(5000);
+					click(FinalGO,"FinalGO");
+					System.out.println("FINAL APPROVAL GO CLICKED.");
+				}	
+				
+				System.out.println(getText(Final_Heading));
+				if (getText(Final_Heading).equalsIgnoreCase("Final Approval"))
+				{
+					Thread.sleep(2000);
+					selectByValue(FinalOfferLetter_DD, "FinalOfferLetter_DD", offerLetterList.get(0));
+					Thread.sleep(2000);
+					click(Screening_Submit, "Submit button");
+					System.out.println("FINAL APPROVAL SUBMITTED.");
+				}		
 			}
+			
 			else
 			{
 				System.out.println("Rejected or dropped out selected");
 				
-//				Click_FeedbackSubmit();
-//				Click_ConfirmationSubmit();
-//				Thread.sleep(5000);
-//				System.out.println(getText(CaseRejectionCompletion));
-//				if (getText(CaseRejectionCompletion).equalsIgnoreCase("Resolved-Completed"))
-//				{
-//					System.out.println("Candidate Case - Resolved Rejected");
-//				}
+				Click_FeedbackSubmit();
+				Thread.sleep(2000);
+				Click_ConfirmationSubmit();
+				Thread.sleep(5000);
+				System.out.println(getText(CaseRejectionCompletion));
+				if (getText(CaseRejectionCompletion).equalsIgnoreCase("Resolved-Completed"))
+				{
+					System.out.println("Candidate Case - Resolved Rejected");
+				}
 			}
 		}
 		

@@ -133,10 +133,10 @@ Feature: To verify interview stages functionality
     
     
     #---------SCENARIO 14-----------------------------------------
-   #@OperationRoundOnHold
-   #@RegressionInterview
-   #Scenario: To verify Operation round OnHold and Final approval functionality
-    #Given Candidate L2 Approved
-    #When I Select the OfferLetter DDL Value as OnHold enter approval details
-    #And  I Select the OfferLetter DDL Value as Approved and approve the final-approval stage
-    #Then Candidate case is approved and closed
+   @OperationRoundOnHold
+   @RegressionInterview
+   Scenario: To verify Operation round OnHold and Final approval functionality
+    Given Candidate L2 Approved
+    When I Select the OfferLetter DDL Value as OnHold enter approval details
+    And  I Select the OfferLetter DDL Value as Approved and approve the final-approval stage
+    Then Candidate case is approved and closed
