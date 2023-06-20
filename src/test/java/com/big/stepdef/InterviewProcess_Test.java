@@ -203,21 +203,22 @@ public class InterviewProcess_Test {
     	i_enter_l2_interviewer_details();  	
     }
 
-    @When("^I Select the L2 approval checkbox and RequireAnotherRound? checkbox displayed$")
+    @When("^I Select the L2 approval checkbox and RequireAnotherRound checkbox displayed$")
     public void i_select_the_l2_approval_checkbox_and_requireanotherround_checkbox_displayed() throws Throwable {
+    	interStages.Click_ViewAll();
     	interStages.Click_Go_L2Feedback();
     	interStages.Approve_L2();
     }
 
-    @Then("^Candidate is approved for L2 Round and case moves to L3 Stage $")
-    public void candidate_is_approved_for_l2_round_and_case_moves_to_l3_stage() throws Throwable {
-    	interStages.Get_l2Completion();
-    	}
-
-    @And("^I Select the RequireAnotherRound? checkbox and submit the case$")
+    @And("^I Select the RequireAnotherRound checkbox and submit the case$")
     public void i_select_the_requireanotherround_checkbox_and_submit_the_case() throws Throwable {
     	interStages.Click_ReqL3 ();
     	interStages.Click_L1FeedbackSubmit();
+    }
+    
+    @Then("^Candidate is approved for L2 Round and case moves to L3 Stage$")
+    public void candidate_is_approved_for_l2_round_and_case_moves_to_l3_stage() throws Throwable {
+    	interStages.Get_l2Completion();
     }
     
     //---------SCENARIO 9: L3 APPROVAL------------------------------------
@@ -337,10 +338,7 @@ public class InterviewProcess_Test {
     public void i_select_the_offerletter_ddl_value_as_dropped_out_and_submit_the_case() throws Throwable {
     	interStages.Click_Opr_Go();
     	interStages.DroppedOut_OfferLetter();
-//    	interStages.Select_OfferLetter();
     	interStages.Get_OfferLetterType();
-//    	interStages.Click_OprSubmit();
-    	
     }
     
    //---------SCENARIO 13 - OPERATION APPROVED-----------------------------------------
@@ -350,18 +348,20 @@ public class InterviewProcess_Test {
 //    	interStages.Select_OfferLetter();
     	interStages.Approved_OfferLetter();
     	interStages.Get_OfferLetterType();
+    	
+    	
 //    	interStages.Enter_JoiningDate();
 //    	interStages.Click_OprSubmit();
 //    	interStages.Click_FinalAproval_Go();
 //    	interStages.Submit_FinalAproval();
     } 
 
-    @And("^ I Approve the finalApproval stage$")
-    public void i_approve_the_finalapproval_stage() throws Throwable {
-    	System.out.println("I Approve the finalApproval stage step");
-//    	interStages.Click_FinalAproval_Go();
-//    	interStages.Submit_FinalAproval();
-    }
+//    @And("^ I Approve the finalApproval stage$")
+//    public void i_approve_the_finalapproval_stage() throws Throwable {
+//    	System.out.println("I Approve the finalApproval stage step");
+////    	interStages.Click_FinalAproval_Go();
+////    	interStages.Submit_FinalAproval();
+//    }
     
     @Then("^Candidate case is approved and closed$")
     public void candidate_case_is_approved_and_closed() throws Throwable {

@@ -1,3 +1,4 @@
+
 @RegressionInterview
 Feature: To verify interview stages functionality
 
@@ -23,7 +24,7 @@ Feature: To verify interview stages functionality
    
    #---------SCENARIO 3------------------------------------
    @L1Approval
-   #@RegressionInterview
+   @RegressionInterview
    Scenario: To verify Scheduling L1 Round and Approve candidate
     Given Candidate screening is approved
     When I enter L1 interviewer details
@@ -72,15 +73,15 @@ Feature: To verify interview stages functionality
     And L2 Round stage gets skipped and Case moves to Operation round
     
     
+    #   reg exp ------- scenario outline-------------------- \"([^\"]*)\"
     #---------SCENARIO 8------------------------------------
     @RequireL3Round
     @RegressionInterview
    Scenario: To verify RequireL3Round checkbox and l2 schedule functionality
     Given Candidate L2 round is scheduled
-    When I Select the L2 approval checkbox and RequireAnotherRound? checkbox displayed
-    And I Select the RequireAnotherRound? checkbox and submit the case
-    Then Candidate is approved for L2 Round and case moves to L3 Stage
-   
+    When I Select the L2 approval checkbox and RequireAnotherRound checkbox displayed
+    And I Select the RequireAnotherRound checkbox and submit the case
+    Then Candidate is approved for L2 Round and case moves to L3 Stage 
    
     
     #---------SCENARIO 9------------------------------------
@@ -128,7 +129,7 @@ Feature: To verify interview stages functionality
    Scenario: To verify Operation round Approval and Final approval functionality
     Given Candidate L2 Approved
     When I Select the OfferLetter DDL Value as Approved enter approval details
-    And  I Approve the finalApproval stage
+    #And  I Approve the finalApproval stage
     Then Candidate case is approved and closed
     
     
@@ -138,5 +139,5 @@ Feature: To verify interview stages functionality
    Scenario: To verify Operation round OnHold and Final approval functionality
     Given Candidate L2 Approved
     When I Select the OfferLetter DDL Value as OnHold enter approval details
-    And  I Select the OfferLetter DDL Value as Approved and approve the final-approval stage
+    #And  I Select the OfferLetter DDL Value as Approved and approve the final-approval stage
     Then Candidate case is approved and closed

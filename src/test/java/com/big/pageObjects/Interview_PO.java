@@ -154,6 +154,7 @@ public class Interview_PO extends TestReusables {
 			
 		
 		
+		// SKIP L2 ROUND
 		@FindBy(xpath ="//label[text()='Skip L2 Interview']")
 		WebElement SkipL2_Label;
 			
@@ -164,7 +165,7 @@ public class Interview_PO extends TestReusables {
 		WebElement SkipL2_Completion;
 	
 		
-		
+		// REQ L3 ROUND
 		@FindBy(xpath ="//label[text()='Require another round?']")
 		WebElement ReqL3_Label;
 		
@@ -175,7 +176,7 @@ public class Interview_PO extends TestReusables {
 		WebElement L2_Completion;
 		
 		
-		
+		// L3 STAGES
 		@FindBy(xpath ="//div[@section_index='2']//button[text()='View all']")
 		WebElement L3Round_GoView;
 			
@@ -202,10 +203,9 @@ public class Interview_PO extends TestReusables {
 		
 		
 		
-		// OPR ROUND
+		// OPERATION ROUND
 		
-		static List<String> offerLetterList = new ArrayList<String>();
-		
+		static List<String> offerLetterList = new ArrayList<String>();	
 		
 		@FindBy(xpath="//div[@section_index='2']//button[text()='View all']")
 		WebElement L3_ViewAll;	
@@ -260,6 +260,20 @@ public class Interview_PO extends TestReusables {
 		WebElement CaseApprovedCompletion;
 
 	
+		
+		// JOINING DATE HANDLING
+		@FindBy(xpath="//tbody[@id='controlCalBody']/tr/td/a")
+		List<WebElement> CalendarAllDates;
+		
+		@FindBy(xpath="//table[@id='Pega_Cal_Cont']//tbody[@id='controlCalBody']/tr/td[@class='calcell today selected']/a")
+		WebElement CalenderTodayDate;
+		
+		@FindBy(xpath="//span[@id='monthSpinner']/span/button[1]")
+		WebElement Month_UpBtn;	
+		
+		@FindBy(xpath="//table[@id='Pega_Cal_Cont']//tbody[@id='controlCalBody']/tr/td[@class='calcell']/a[@data-day='1']")
+		WebElement NextMonthDate;
+		
 		
 		//WEB ELEMENT METHODS
 		public void Add_offerLetterList()
@@ -347,7 +361,6 @@ public class Interview_PO extends TestReusables {
 		
 		public void Click_Go_ToEnterL1() throws InterruptedException
 		{
-			String screen_msg = getText(Screening_CompletionMsg);
 			System.out.println("screening completion t/f : "+Screening_CompletionMsg.isDisplayed());
 			Thread.sleep(2000);
 			
@@ -468,7 +481,7 @@ public class Interview_PO extends TestReusables {
 				Thread.sleep(2000);
 				click(TodayDate,"TodayDate");
 				Thread.sleep(3000);
-			}		
+			}			
 		}
 		
 		public void L1_Details_Submit () throws InterruptedException {
@@ -702,10 +715,10 @@ public class Interview_PO extends TestReusables {
 		public void Enter_L3_Deatils() throws InterruptedException {
 			Thread.sleep(3000);
 			Enter_InterviewerEmail();
-			Select_InterviewerType();
 			Enter_InterviewerName();
-			Enter_Interview_Venue();
+			Select_InterviewerType();	
 			Enter_DateTime();
+			Enter_Interview_Venue();		
 			L1_Details_Submit();
 		}
 		
@@ -791,18 +804,22 @@ public class Interview_PO extends TestReusables {
 		
 		public void Rejected_OfferLetter() throws InterruptedException {
 			selectByValue(OfferLetter_DD, "OfferLetter_DD", offerLetterList.get(2));
+			Thread.sleep(3000);
 		}
 	
 		public void DroppedOut_OfferLetter() throws InterruptedException {
 			selectByValue(OfferLetter_DD, "OfferLetter_DD", offerLetterList.get(3));
+			Thread.sleep(3000);
 		}
 		
 		public void Approved_OfferLetter() throws InterruptedException {
 			selectByValue(OfferLetter_DD, "OfferLetter_DD", offerLetterList.get(0));
+			Thread.sleep(3000);
 		}
 		
 		public void OnHold_OfferLetter() throws InterruptedException {
 			selectByValue(OfferLetter_DD, "OfferLetter_DD", offerLetterList.get(1));
+			Thread.sleep(3000);
 		}
 		
 		
@@ -829,20 +846,70 @@ public class Interview_PO extends TestReusables {
 			
 			if (OfferLetter_DD_Value.equalsIgnoreCase("Approved"))
 			{
-				
+				System.out.println("-------------------------approved selected-------------------");
 				enterText(Designation, "Designation", "Test designation");
 				enterText(CTCOffered, "CTCOffered", "60000");
 				
-				// date pending
+				// DATE SELECTION - WORKING EXISTING CODE
+//				click(Calendar_Icon,"Calendar_Icon");
+//				Thread.sleep(5000);
+//				int addDate = 1;
+//				String todaydate = getAttributeValue(TodayDateAttribute, "data-day");
+//				System.out.println("todaydate: " + todaydate);
+//				int dateToSelect = Integer.valueOf(todaydate) + addDate;
+//				System.out.println("dateToSelect : " +dateToSelect);
+//				driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day="+dateToSelect+"]")).click();
+//				Thread.sleep(5000);	
+				
+				
+				// CLICKING CALENDAR ICON
 				click(Calendar_Icon,"Calendar_Icon");
 				Thread.sleep(5000);
-				int addDate = 1;
-				String todaydate = getAttributeValue(TodayDateAttribute, "data-day");
-				System.out.println("todaydate: " + todaydate);
-				int dateToSelect = Integer.valueOf(todaydate) + addDate;
-				System.out.println("dateToSelect : " +dateToSelect);
-				driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day="+dateToSelect+"]")).click();
-				Thread.sleep(5000);	
+				
+				// GETTING TODAY DATE
+				String todayDate = getAttributeValue(CalenderTodayDate, "data-day");
+				
+				// GETTING TOTAL NO OF DATES IF 30 OR 31
+				int totalDates = CalendarAllDates.size();
+				if (totalDates == 30) {
+					System.out.println("30 DAYS MONTH");
+					if (Integer.valueOf(todayDate) == 30)
+					{
+						System.out.println("TODAY DATE IS 30");
+						click(Month_UpBtn,"Month_UpBtn");
+						Thread.sleep(3000);
+						click(NextMonthDate,"NextMonthDate");
+					}
+					else
+					{
+						int addDate = 1;
+						System.out.println("todaydate: " + todayDate);
+						int dateToSelect = Integer.valueOf(todayDate) + addDate;
+						System.out.println("dateToSelect : " +dateToSelect);
+						driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day="+dateToSelect+"]")).click();
+						Thread.sleep(5000);
+					}
+				}		
+				else if (totalDates == 31)
+				{
+					System.out.println("31 DAYS MONTH");
+					if (Integer.valueOf(todayDate) == 31)
+					{
+						System.out.println("TODAY DATE IS 31");
+						click(Month_UpBtn,"Month_UpBtn");
+						Thread.sleep(3000);
+						click(NextMonthDate,"NextMonthDate");
+					}
+					else
+					{
+						System.out.println("NEITHER 30 NOR 31");
+						int addDate = 1;
+						System.out.println("todaydate: " + todayDate);
+						int dateToSelect = Integer.valueOf(todayDate) + addDate;
+						System.out.println("dateToSelect : " +dateToSelect);
+						driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day="+dateToSelect+"]")).click();
+						Thread.sleep(5000);
+					}
 				
 				Click_FeedbackSubmit();
 				Click_ConfirmationSubmit();
@@ -865,24 +932,75 @@ public class Interview_PO extends TestReusables {
 					System.out.println("FINAL APPROVAL SUBMITTED.");
 				}
 			}
+		}
 
 			
 			else if (OfferLetter_DD_Value.equalsIgnoreCase("On Hold"))
 			{
-				System.out.println("On Hold selected");
+				System.out.println("-------------------------On Hold selected-------------------");
 				enterText(Designation, "Designation", "Test designation");
 				enterText(CTCOffered, "CTCOffered", "60000");
 				
-				// date pending	
+//				DATE SELECTION - EXISTING CODE
+//				click(Calendar_Icon,"Calendar_Icon");
+//				Thread.sleep(5000);
+//				int addDate = 1;
+//				String todaydate = getAttributeValue(TodayDateAttribute, "data-day");
+//				System.out.println("todaydate: " + todaydate);
+//				int dateToSelect = Integer.valueOf(todaydate) + addDate;
+//				System.out.println("dateToSelect : " +dateToSelect);
+//				driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day="+dateToSelect+"]")).click();
+//				Thread.sleep(5000);	
+				
+				
+				// CLICKING CALENDAR ICON
 				click(Calendar_Icon,"Calendar_Icon");
 				Thread.sleep(5000);
-				int addDate = 1;
-				String todaydate = getAttributeValue(TodayDateAttribute, "data-day");
-				System.out.println("todaydate: " + todaydate);
-				int dateToSelect = Integer.valueOf(todaydate) + addDate;
-				System.out.println("dateToSelect : " +dateToSelect);
-				driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day="+dateToSelect+"]")).click();
-				Thread.sleep(5000);	
+				
+				// GETTING TODAY DATE
+				String todayDate1 = getAttributeValue(CalenderTodayDate, "data-day");
+				
+				// GETTING TOTAL NO OF DATES IF 30 OR 31
+				int totalDates1 = CalendarAllDates.size();
+				if (totalDates1 == 30) {
+					System.out.println("30 DAYS MONTH");
+					if (Integer.valueOf(todayDate1) == 30)
+					{
+						System.out.println("TODAY DATE IS 30");
+						click(Month_UpBtn,"Month_UpBtn");
+						Thread.sleep(3000);
+						click(NextMonthDate,"NextMonthDate");
+					}
+					else
+					{
+						int addDate = 1;
+						System.out.println("todaydate: " + todayDate1);
+						int dateToSelect = Integer.valueOf(todayDate1) + addDate;
+						System.out.println("dateToSelect : " +dateToSelect);
+						driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day="+dateToSelect+"]")).click();
+						Thread.sleep(5000);
+					}
+				}		
+				else if (totalDates1 == 31)
+				{
+					System.out.println("31 DAYS MONTH");
+					if (Integer.valueOf(todayDate1) == 31)
+					{
+						System.out.println("TODAY DATE IS 31");
+						click(Month_UpBtn,"Month_UpBtn");
+						Thread.sleep(3000);
+						click(NextMonthDate,"NextMonthDate");
+					}
+					else
+					{
+						System.out.println("NEITHER 30 NOR 31");
+						int addDate = 1;
+						System.out.println("todaydate: " + todayDate1);
+						int dateToSelect = Integer.valueOf(todayDate1) + addDate;
+						System.out.println("dateToSelect : " +dateToSelect);
+						driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day="+dateToSelect+"]")).click();
+						Thread.sleep(5000);
+					}
 				
 				Click_FeedbackSubmit();
 				Click_ConfirmationSubmit();
@@ -907,11 +1025,11 @@ public class Interview_PO extends TestReusables {
 					System.out.println("FINAL APPROVAL SUBMITTED.");
 				}		
 			}
+		}
 			
 			else
 			{
 				System.out.println("Rejected or dropped out selected");
-				
 				Click_FeedbackSubmit();
 				Thread.sleep(2000);
 				Click_ConfirmationSubmit();
@@ -922,21 +1040,70 @@ public class Interview_PO extends TestReusables {
 					System.out.println("Candidate Case - Resolved Rejected");
 				}
 			}
-		}
+	 }
+		
+//		public void Enter_JoiningDate() throws InterruptedException
+//		{
+//			System.out.println("joining date method");	
+//			click(Calendar_Icon,"Calendar_Icon");
+//			Thread.sleep(5000);
+//			int addDate = 1;
+//			String todaydate = getAttributeValue(TodayDateAttribute, "data-day");
+//			System.out.println("todaydate: " + todaydate);
+//			int dateToSelect = Integer.valueOf(todaydate) + addDate;
+//			System.out.println("dateToSelect : " +dateToSelect);
+//			driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day="+dateToSelect+"]")).click();
+//			Thread.sleep(5000);	
+//		}
+		
 		
 		// yet to handle when date equals 31 or month is of 30 days
-		public void Enter_JoiningDate() throws InterruptedException
+		public void Enter_JoiningDate1() throws InterruptedException
 		{
-			System.out.println("joining date method");	
+			// CLICKING CALENDAR ICON
 			click(Calendar_Icon,"Calendar_Icon");
 			Thread.sleep(5000);
-			int addDate = 1;
-			String todaydate = getAttributeValue(TodayDateAttribute, "data-day");
-			System.out.println("todaydate: " + todaydate);
-			int dateToSelect = Integer.valueOf(todaydate) + addDate;
-			System.out.println("dateToSelect : " +dateToSelect);
-			driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day="+dateToSelect+"]")).click();
-			Thread.sleep(5000);	
+			
+			// GETTING TODAY DATE
+			String todayDate = getAttributeValue(CalenderTodayDate, "data-day");
+			
+			// GETTING TOTAL NO OF DATES IF 30 OR 31
+			int totalDates = CalendarAllDates.size();
+			if (totalDates == 30) {
+				if (Integer.valueOf(todayDate) == 30)
+				{
+					click(Month_UpBtn,"Month_UpBtn");
+					Thread.sleep(3000);
+					click(NextMonthDate,"NextMonthDate");
+				}
+				else
+				{
+					int addDate = 1;
+					System.out.println("todaydate: " + todayDate);
+					int dateToSelect = Integer.valueOf(todayDate) + addDate;
+					System.out.println("dateToSelect : " +dateToSelect);
+					driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day="+dateToSelect+"]")).click();
+					Thread.sleep(5000);
+				}
+			}		
+			else if (totalDates == 31)
+			{
+				if (Integer.valueOf(todayDate) == 31)
+				{
+					click(Month_UpBtn,"Month_UpBtn");
+					Thread.sleep(3000);
+					click(NextMonthDate,"NextMonthDate");
+				}
+				else
+				{
+					int addDate = 1;
+					System.out.println("todaydate: " + todayDate);
+					int dateToSelect = Integer.valueOf(todayDate) + addDate;
+					System.out.println("dateToSelect : " +dateToSelect);
+					driver.findElement(By.xpath("//td[@class='calcell']/a[@data-day="+dateToSelect+"]")).click();
+					Thread.sleep(5000);
+				}
+			}	
 		}
 		
 		public void Click_OprSubmit() throws InterruptedException {
