@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Hello World'
+                build 'Maven_proj'
             }
         }
         stage('Test') {
