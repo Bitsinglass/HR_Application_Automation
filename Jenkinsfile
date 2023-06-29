@@ -20,7 +20,7 @@ pipeline {
     }
     post{
         always {
-            emailext body: 'Hi Jatin this is from pipeline', subject: 'Mail from Pipeline', to: 'jatinqa31@gmail.com'
+            emailext body: 'Hi Jatin this is from pipeline', subject: 'Mail from Pipeline', to: 'jatin.bakshi@bitsinglass.com'
         }
     }
 }
